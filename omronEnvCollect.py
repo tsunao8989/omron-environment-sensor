@@ -98,14 +98,14 @@ def _requests(url, method, *args, **kargs):
     method      = 'POST' if 'data' in kargs else method
     # requests.Session() のオプション
     retry_count = kargs['retry_count'] if 'retry_count' in kargs else REQUEST_RETRY
-    timeouts    = kargs['timeout'] if 'timeout' in kargs else REQUEST_TIMEOUT 
+    timeout_val = kargs['timeout'] if 'timeout' in kargs else REQUEST_TIMEOUT 
     factor      = kargs['factor'] if 'factor' in kargs else REQUEST_FACTOR
     forcelists  = kargs['forcelist'] if 'forcelist' in kargs else REQUEST_FORCELIST   
     
     # forcelists の要素を int型に変更
     forcelist_array = [int(s) for s in forcelists]
-    # timeouts の要素を float型に変更し tuple の戻す
-    timeout_array = [float(s) for s in timeouts]
+    # timeout_val の要素を float型に変更し tuple の戻す
+    timeout_array = [float(s) for s in timeout_val]
     timeout_tuple = tuple(timeout_array)
     
     session = requests.Session()
@@ -277,8 +277,8 @@ def main():
     
     #lists = ['f6:ae:2f:68:1a:b8', 'da:6f:c8:f0:23:0a']
     #lists = ['da:6f:c8:f0:23:0a']
-    #dd = {'f6:ae:2f:68:1a:b8': {'SensorType': 'EP', 'Temperature': 23.64, 'Humidity': 57.87, 'Light': 0, 'UV': 0.02, 'Pressure': 1016.5, 'Noise': 36.45, 'Discomfort': 70.71, 'WBGT': 21.02, 'BatteryVoltage': 2.72}, 'e6:5c:80:ae:0e:59': {'SensorType': 'EP', 'Temperature': 23.32, 'Humidity': 43.58, 'Light': 86, 'UV': 0.02, 'Pressure': 1015.9, 'Noise': 44.53, 'Discomfort': 69.01, 'WBGT': 18.96, 'BatteryVoltage': 2.92}}
-    #dd = {'DeviceName': 'f6:ae:2f:68:1a:b8', 'Date_Master': '2020-11-05 08:14:00', 'Date': '2020-11-05 08:14:13.281416', 'SensorType': 'EP', 'Temperature': '23.57', 'Humidity': '54.02', 'Light': '407', 'UV': '0.03', 'Pressure': '1020.8', 'Noise': '43.51', 'BatteryVoltage': '2.72'}
+    #d = {'f6:ae:2f:68:1a:b8': {'SensorType': 'EP', 'Temperature': 23.64, 'Humidity': 57.87, 'Light': 0, 'UV': 0.02, 'Pressure': 1016.5, 'Noise': 36.45, 'Discomfort': 70.71, 'WBGT': 21.02, 'BatteryVoltage': 2.72}, 'e6:5c:80:ae:0e:59': {'SensorType': 'EP', 'Temperature': 23.32, 'Humidity': 43.58, 'Light': 86, 'UV': 0.02, 'Pressure': 1015.9, 'Noise': 44.53, 'Discomfort': 69.01, 'WBGT': 18.96, 'BatteryVoltage': 2.92}}
+    #d = {'DeviceName': 'f6:ae:2f:68:1a:b8', 'Date_Master': '2020-11-05 08:14:00', 'Date': '2020-11-05 08:14:13.281416', 'SensorType': 'EP', 'Temperature': '23.57', 'Humidity': '54.02', 'Light': '407', 'UV': '0.03', 'Pressure': '1020.8', 'Noise': '43.51', 'BatteryVoltage': '2.72'}
     omron_data = bleScan()
     if args.write:
         write_csv_file(omron_data)
