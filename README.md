@@ -1,8 +1,5 @@
 # オムロン環境センサー（2JCIE-BL01）のデータを取得
 Raspberry-pi でオムロン環境センサー（2JCIE-BL01）のデータを取得した際のスクリプト一式。
-
-![1.png](image/1.png)
-
 以下 Qiita の記事を参考に、取得したデータは Google スプレッドシートにアップロードしデータポータルで可視化する。
 
 [Omron環境センサの値をRaspberryPiで定期ロギングする](https://qiita.com/c60evaporator/items/ed2ffde4c87001111c12)
