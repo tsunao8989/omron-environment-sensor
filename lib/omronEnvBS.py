@@ -37,3 +37,5 @@ class ScanDelegate(btle.DefaultDelegate):
                         self.sensor_values[self.dev_addr] = {}
 
                     self.sensor_values[self.dev_addr] = values
+                    
+                    
