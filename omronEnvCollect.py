@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from bluepy import btle
-from omronEnvBC import ScanDelegate
+from lib.omronEnvBS import ScanDelegate
 
 import requests
 from urllib3.util import Retry
@@ -69,7 +69,7 @@ def bleScan(retry_count=BLE_RETRY, time=BLE_SCAN_TIME, devlists=[]):
     except Exception as e:
         logger.error('BTLE Exception while scannning. ({})'.format(e))
     
-    values = scanner.delegate.sensorValues
+    values = scanner.delegate.sensor_values
     # デバイスが見つからない場合
     if len(values) == 0 and retry_count != 0:
         logger.info('Retry BTLE scanning. BTLE advertising data is not found. ')
@@ -160,14 +160,14 @@ def convert_array(values, mode='dict'):
                     'MacAddress':   str(key),
                     'Date_Master':  str(master_date),
                     'Date':         str(date),
-                    'SensorType':   str(value['SensorType']),
-                    'Temperature':  str(value['Temperature']),
-                    'Humidity':     str(value['Humidity']),
-                    'Light':        str(value['Light']),
-                    'UV':           str(value['UV']),
-                    'Pressure':     str(value['Pressure']),
-                    'Noise':        str(value['Noise']),
-                    'Batter':       str(value['BatteryVoltage'])
+                    'SensorType':   str(value['d1']),
+                    'Temperature':  str(value['d2']),
+                    'Humidity':     str(value['d3']),
+                    'Light':        str(value['d4']),
+                    'UV':           str(value['d5']),
+                    'Pressure':     str(value['d6']),
+                    'Noise':        str(value['d7']),
+                    'Batter':       str(value['d8'])
                 }
                 return_array.append(dataset)
         elif mode.lower() == 'list':
@@ -176,14 +176,14 @@ def convert_array(values, mode='dict'):
                     str(master_date),
                     str(date),
                     str(key),
-                    str(value['SensorType']),
-                    str(value['Temperature']),
-                    str(value['Humidity']),
-                    str(value['Light']),
-                    str(value['UV']),
-                    str(value['Pressure']),
-                    str(value['Noise']),
-                    str(value['BatteryVoltage'])
+                    str(value['d1']),
+                    str(value['d2']),
+                    str(value['d3']),
+                    str(value['d4']),
+                    str(value['d5']),
+                    str(value['d6']),
+                    str(value['d7']),
+                    str(value['d8'])
                 ]
                 return_array.append(dataset)
 
