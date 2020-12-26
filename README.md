@@ -21,7 +21,7 @@ $ sudo apt install libglib2.0-dev
 `bluepy` のインストールし `bluepy-helper` に sudo を許可。
 ``` bash
 $ pip install bluepy
-$ cd `pip3 show bluepy | grep "^Location:" | sed -e 's/^Location://' -e 's/ //g'`/bluepy
+$ cd `pip3 show bluepy | grep "^Location:" | sed -e 's/^Location://' -e 's/^ //' -e 's/ $//'`/bluepy
 $ sudo setcap 'cap_net_raw,cap_net_admin+eip' bluepy-helper
 ```
 
