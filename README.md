@@ -25,3 +25,9 @@ $ cd `pip3 show bluepy | grep "^Location:" | sed -e 's/^Location://' -e 's/^ //'
 $ sudo setcap 'cap_net_raw,cap_net_admin+eip' bluepy-helper
 ```
 
+## スクリプトの実行
+``` bash
+$ git https://github.com/tsunao8989/omron-environment-sensor.git
+$ cd omron-environment-sensor
+$ python omronEnvCollect.py
+```
